@@ -1,11 +1,13 @@
+const database = require("./database/index");
+const app = require("./app");
+require('dotenv').config();
 
-var express = require("express");
-
-var app = express();
-
-app.use(express.static(__dirname));
+const PORT = process.env.PORT
 
 
-var server = app.listen(3000, () => {
-    console.log('server is running on port', server.address().port);
-});
+  // connect to database
+  database.connect();
+
+  app.listen(PORT, () => {
+    console.log('Listening on port, ', PORT)
+})
