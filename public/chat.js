@@ -1,53 +1,57 @@
-// JavaScript
-$(document).ready(() => {
-    const socket = io();
+ // Establish a socket connection to the server
+ const socket = io();
 
-    const chatBox = $("#chatBox");
-    const inputField = $("#inputField");
-    const sendButton = $("#sendButton");
-
-    function appendMessage(message, sender) {
-      const messageElement = $("<div>")
-        .addClass("message-text")
-        .attr("id", sender)
-        .text(message);
-
-      const timestamp = new Date().toLocaleTimeString();
-      const timestampElement = $("<span>")
-        .addClass("timestamp")
-        .text(timestamp);
-
-      const messageContainer = $("<div>").addClass(
-        `message-container ${sender}`
-      );
-      const messageOuterContainer = $("<div>").addClass(
-        `message-outer-container ${sender}`
-      );
-      messageElement.html(message.replace(/\n/g, "<br>"));
-      messageOuterContainer.append(messageContainer);
-      messageContainer.append(messageElement, timestampElement);
-      chatBox.append(messageOuterContainer);
-      chatBox.scrollTop(chatBox.prop("scrollHeight"));
-    }
-
-    function sendMessage() {
-      const message = inputField.val();
-      if (message === "") {
-        return;
-      }
-      appendMessage(message, "user");
-      socket.emit("user-message", message);
-      inputField.val("");
-    }
-
-    socket.on("bot-message", (message) => {
-      appendMessage(message, "bot");
-    });
-
-    sendButton.on("click", sendMessage);
-    inputField.on("keydown", (event) => {
-      if (event.key === "Enter") {
-        sendMessage();
-      }
-    });
-  });
+ // Query DOM elements
+ const inputField = document.getElementById("inputField");
+ const chatBox = document.getElementById("chatBox");
+ 
+ // Helper function to append a message to the chat box
+ function appendMessage(message, sender) {
+   const messageElement = document.createElement("div");
+   messageElement.classList.add("message-text", sender);
+   messageElement.textContent = message;
+   
+   const timestamp = new Date().toLocaleTimeString(); // create timestamp
+   const timestampElement = document.createElement("span"); // create span element for timestamp
+   timestampElement.classList.add("timestamp");
+   timestampElement.textContent = timestamp;
+   
+   const messageContainer = document.createElement("div");
+   messageContainer.classList.add("message-container");
+   messageContainer.appendChild(messageElement);
+   messageContainer.appendChild(timestampElement);
+   chatBox.appendChild(messageContainer);
+   chatBox.scrollTop = chatBox.scrollHeight;
+ }
+ 
+ // Handle sending messages
+ function sendMessage() {
+   const message = inputField.value.trim();
+   if (message === "") {
+     return;
+   }
+   appendMessage(message, "user");
+   socket.emit("user-message", message);
+   inputField.value = "";
+ }
+ 
+ // Handle receiving messages from the server
+ socket.on("bot-message", (message) => {
+   appendMessage(message, "bot");
+ });
+ 
+ // Attach event listeners
+ document.querySelector("form").addEventListener("submit", (event) => {
+   event.preventDefault();
+   sendMessage();
+ });
+ 
+ document.getElementById("sendButton").addEventListener("click", sendMessage);
+ 
+ document.getElementById("inputField").addEventListener("keydown", (event) => {
+   if (event.key === "Enter") {
+     event.preventDefault();
+     sendMessage();
+   }
+ });
+ 
