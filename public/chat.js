@@ -3,7 +3,7 @@
 
  // Query DOM elements
  const inputField = document.getElementById("inputField");
- const chatBox = document.getElementById("chatBox");
+ const IjawFoods = document.getElementById("IjawFoods");
  
  // Helper function to append a message to the chat box
  function appendMessage(message, sender) {
@@ -20,8 +20,8 @@
    messageContainer.classList.add("message-container");
    messageContainer.appendChild(messageElement);
    messageContainer.appendChild(timestampElement);
-   chatBox.appendChild(messageContainer);
-   chatBox.scrollTop = chatBox.scrollHeight;
+   IjawFoods.appendChild(messageContainer);
+   IjawFoods.scrollTop = IjawFoods.scrollHeight;
  }
  
  // Handle sending messages

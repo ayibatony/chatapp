@@ -24,11 +24,11 @@ io.use((socket, next) =>
 );
 
 // Define the fast foods and order history
-const fastFoods = {
-  2: "Item1",
-  3: "Item2",
-  4: "Item3",
-  5: "Item4",
+const ijawFoods = {
+  2: "kekefie",
+  3: "krigina",
+  4: "cat-fish-peppersoup",
+  5: "Bole",
 };
 const orderHistory = [];
 
@@ -59,14 +59,14 @@ io.on("connection", (socket) => {
       // Save the user's name and update the welcome message
       userName = message;
       sendBotMessage(
-        `Welcome to the ChatBot, ${userName}! Place an order\n1. Typehere\n99. Typehere\n98. Typehere\n97. Typehere\n0. Cancel order`
+        `Welcome to the ijawFoods, ${userName}! Place an order\n1. Checkout\n99. Orders\n98. Current Order\n97. Cancel Order\n0.`
       );
     } else {
       switch (message) {
         case "1":
           // Generate the list of items dynamically
-          const itemOptions = Object.keys(fastFoods)
-            .map((key) => `${key}. ${fastFoods[key]}`)
+          const itemOptions = Object.keys(ijawFoods)
+            .map((key) => `${key}. ${ijawFoods[key]}`)
             .join("\n");
           sendBotMessage(
             `Here is a list of items you can order:\n ${itemOptions} \nPlease select one by typing its number.`
@@ -78,8 +78,8 @@ io.on("connection", (socket) => {
         case "5":
           // Parse the number from the user input and add the corresponding item to the current order
           const selectedIndex = parseInt(message);
-          if (fastFoods.hasOwnProperty(selectedIndex)) {
-            const selectedItem = fastFoods[selectedIndex];
+          if (ijawFoods.hasOwnProperty(selectedIndex)) {
+            const selectedItem = ijawFoods[selectedIndex];
             socket.request.session.currentOrder.push(selectedItem);
             sendBotMessage(
               `${selectedItem} has been added to your order. Do you want to add more items to your order? Type numbers. If not, type 99 to checkout.`
