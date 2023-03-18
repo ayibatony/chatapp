@@ -1,36 +1,51 @@
 input[type=text] {
-    width: 100%;
+    width: auto;
+    height: auto;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid red;
+    border: 2px solid rgb(21, 20, 20);
     border-radius: 4px;
-    background-color: #3CBC8D;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
   }
 
 form {
-    width: 100%;
-    height: 150px;
+    width: auto;
+    height: auto;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-style: normal;
-    font-size: medium;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
   }
   #inputField {
-    text-align: center;
-    color: #04AA6D;
+    text-align: left;
+    height: auto;
+    width: auto;
   }
 
   #sendButton {
-    background-color: #04AA6D;
+    background-color: whitesmoke;
     border: none;
-    color: white;
+    color: rgb(27, 25, 25);
     padding: 16px 32px;
-    text-decoration: none;
+    text-decoration: black;
     margin: 4px 2px;
     cursor: pointer;
+  }
+
+
+  #ijawFoods {
+    text-align: center;
+    color: #04AA6D;
+  }
+.header {
+    text-align: center;
+    color: azure;
+}
+  div {
+    text-align: left;
+    color: whitesmoke;
+    background-color: rgb(13, 10, 10);
   }
