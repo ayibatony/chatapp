@@ -1,12 +1,12 @@
 # Introduction
- This is a restuarant food realtime chat ordering app. 
- built with node js, websocket( session.io).
+ This is a food realtime chat ordering app from a restaurant. 
+ built with HTML, CSS, Javascript, nodejs, websocket( session.io).
  I focussed more on the backend than the frontend. 
- I will be improving the app as time goes by
+ I will be improving the app as time goes by.
 
 # Perequisites
 
-Install all required dependecies with //npm install "dependency-name"
+Install all required dependecies with //npm install  "dependency-name"
   
   dependencies: 
 
@@ -28,3 +28,6 @@ index.html - file
 # server side structure 
 
 app.js - file
+
+# hosted site
+https://ijawfoods.onrender.com
